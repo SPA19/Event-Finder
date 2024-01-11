@@ -2,31 +2,41 @@ import { useState } from "react";
 import EventItem from "./components/EventItem";
 import eventsJSON from "../../data/events.json";
 
-const Events = () => {
+const Events = ({ searchTerm }) => {
   const [data] = useState(eventsJSON);
   const {
     _embedded: { events },
   } = data;
 
   const handleEventItemClick = (id) => {
-    console.log('evento clickeado:', id);
+    console.log("evento clickeado:", id);
   };
 
-  const eventsComponent = events.map((eventItem) => (
-    <EventItem
-      key={`event-ticket-${eventItem.id}`}
-      info={eventItem.info}
-      name={eventItem.name}
-      image={eventItem.images[0].url}
-      onEventClick={handleEventItemClick}
-      id={eventItem.id}
-    />
-  ));
+  const renderEvents = () => {
+    let eventsFiltered = events;
+
+    if (searchTerm.length > 0) {
+      eventsFiltered = eventsFiltered.filter((item) =>
+        item.name.toLocaleLowerCase().includes(searchTerm)
+      );
+    }
+
+    return eventsFiltered.map((eventItem) => (
+      <EventItem
+        key={`event-ticket-${eventItem.id}`}
+        info={eventItem.info}
+        name={eventItem.name}
+        image={eventItem.images[0].url}
+        onEventClick={handleEventItemClick}
+        id={eventItem.id}
+      />
+    ));
+  };
 
   return (
     <div>
       Eventos
-      {eventsComponent}
+      {renderEvents()}
     </div>
   );
 };
