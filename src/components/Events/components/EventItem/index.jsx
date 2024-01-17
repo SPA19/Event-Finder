@@ -1,17 +1,25 @@
 // eslint-disable-next-line react/prop-types
-const EventItem = ({ info, id, name, image, onEventClick }) => {
+import styles from "./EventItem.module.css";
 
+const EventItem = ({ info, id, name, image, onEventClick }) => {
   const handleSeeMoreClick = (evt) => {
     evt.stopPropagation();
     onEventClick(id);
   };
 
   return (
-    <div onClick={() => console.log("Padre clickeado")}>
+    <div
+      onClick={() => console.log("Padre clickeado")}
+      className={styles.eventItemContainer}
+    >
       <img src={image} alt={name} height={200} width={200} />
-      <h4>{name}</h4>
-      <p>{info}</p>
-      <button onClick={handleSeeMoreClick}>Ver mas</button>
+      <div className={styles.eventInfoContainer}>
+        <h4 className={styles.eventName}>{name}</h4>
+        <p className={styles.eventsInfo}>{info}</p>
+        <button onClick={handleSeeMoreClick} className={styles.seeMoreBtn}>
+          Ver mas
+        </button>
+      </div>
     </div>
   );
 };
