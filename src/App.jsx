@@ -1,22 +1,8 @@
-import { useRef, useState } from "react";
+import Routes from "./routes";
 import "./App.css";
-import Events from "./components/Events";
-import Navbar from "./components/Navbar";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const containerRef = useRef();
-
-  const handleNavbarSearch = (term) => {
-    setSearchTerm(term);
-  };
-
-  return (
-    <>
-      <Navbar onSerch={handleNavbarSearch} ref={containerRef} />
-      <Events searchTerm={searchTerm} />
-    </>
-  );
+  return <Routes />;
 }
 
 export default App;
