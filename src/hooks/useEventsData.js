@@ -15,7 +15,7 @@ const useEventsData = () => {
       } catch (error) {
         setError(error);
       }
-    }, 4000);
+    }, 2000);
   }, []);
 
   return {

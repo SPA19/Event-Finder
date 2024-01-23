@@ -19,11 +19,12 @@ const router = createBrowserRouter([
     element: <Profile/>,
     children: [
       {
-        path: "/my-info",
+        path: "my-info",
         element:<div>My info</div>
       },
       {
-        path: "/"
+        path: "liked-events",
+        element: <div>Liked events</div>
       }]
   }
 
