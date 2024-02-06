@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
+
 import styles from "./Detail.module.css";
 
 const Detail = () => {
@@ -69,9 +70,7 @@ const Detail = () => {
           {eventData.priceRanges?.[0].max} {eventData.priceRanges?.[0].currency}
         </p>
       </div>
-        <a href={eventData.url}>
-        Ir por tus boletos
-        </a>
+      <a href={eventData.url}>Ir por tus boletos</a>
     </div>
   );
 };
