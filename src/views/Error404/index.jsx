@@ -6,7 +6,7 @@ const Error404 = () => {
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>{error.status} Ops!!!</h3>
+      <h3 className={styles.title}>{error.status} Ups!!! Ha ocurrido un problema</h3>
       <p className={styles.description}>{error.data}</p>
     </div>
   );
