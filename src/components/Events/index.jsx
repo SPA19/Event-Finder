@@ -33,7 +33,7 @@ const Events = ({ searchTerm, events }) => {
 
   return (
     <div>
-      Eventos
+      <h2>Eventos</h2>
       {renderEvents()}
     </div>
   );

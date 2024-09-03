@@ -8,6 +8,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import Profile from "../views/Profile";
 import LikedEvents from "../views/Profile/components/LikedEvents";
 import MyInfo from "../views/Profile/components/MyInfo";
+import { eventLoader } from "../utils/eventLoader.js";
 
 const router = createBrowserRouter([
   {
@@ -19,11 +20,14 @@ const router = createBrowserRouter([
     path: "/detail/:eventId",
     element: (
       <Suspense fallback={<div>Cargando...</div>}>
-        <ErrorBoundary fallback={<div>Ha habido un error al obtener el detalle</div>}>
+        <ErrorBoundary
+          fallback={<div>Ha habido un error al obtener el detalle</div>}
+        >
           <Detail />
         </ErrorBoundary>
       </Suspense>
     ),
+    loader: eventLoader,
   },
   {
     path: "/profile",

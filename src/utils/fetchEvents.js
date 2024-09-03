@@ -1,23 +1,14 @@
-import wrapPromise from "./wrapPromise";
-
 const fetchEventDetail = async (eventId) => {
   try {
+    const apiKey = import.meta.env.VITE_TICKETMASTER_API_KEY;
     const response = await fetch(
-      `https://app.ticketmaster.com/discovery/v2/events/${eventId}?apikey=${
-        import.meta.env.VITE_TICKETMASTER_API_KEY
-      }`
+      `https://app.ticketmaster.com/discovery/v2/events/${eventId}?apikey=${apiKey}`
     );
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching event details:", error);
   }
 };
 
-const fetchData = (eventId) => {
-  return {
-    eventDetail: wrapPromise(fetchEventDetail(eventId)),
-  };
-};
-
-export default fetchData;
+export default fetchEventDetail;

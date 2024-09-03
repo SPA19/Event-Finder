@@ -6,13 +6,14 @@ const useEventsResults = create((set) => ({
   error: null,
   isLoading: false,
   fetchEvents: async (params) => {
+    const apiCountry = import.meta.env.VITE_API_COUNTRY;
+    const apiKey = import.meta.env.VITE_TICKETMASTER_API_KEY;
     try {
       await set(() => ({ isLoading: true }));
-
       const response = await fetch(
-        `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${
-          import.meta.env.VITE_TICKETMASTER_API_KEY
-        }&countryCode=MX${params?.length ? params : ""}`
+        `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&countryCode=${apiCountry}${
+          params?.length ? params : ""
+        }`
       );
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);

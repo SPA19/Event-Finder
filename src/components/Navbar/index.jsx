@@ -25,6 +25,10 @@ const Navbar = forwardRef(({ onSerch }, ref) => {
         marginBottom: 14,
         width: "100%",
         display: "flex",
+        alignItems: "center",
+        background: "#1279fd",
+        border: "none",
+        borderRadius: 5,
       }}
     >
       <div
@@ -33,14 +37,25 @@ const Navbar = forwardRef(({ onSerch }, ref) => {
           display: "flex",
         }}
       >
-        <p style={{ fontSize: 24, fontWeight:"bold" }}>Mi Boletera</p>
+        <Link
+          to={"/"}
+          style={{
+            fontSize: 24,
+            fontWeight: "bold",
+            textDecoration: "none",
+            paddingLeft: 18,
+            color: "#fff",
+          }}
+        >
+          Mi Boletera
+        </Link>
       </div>
       <div
         style={{
           flex: 1,
           display: "flex",
-          alignItems:"center",
-          justifyContent: "flex-end"
+          alignItems: "center",
+          justifyContent: "flex-end",
         }}
       >
         <input
@@ -52,15 +67,20 @@ const Navbar = forwardRef(({ onSerch }, ref) => {
             fontSize: 16,
             padding: "6px 12px",
             borderRadius: 4,
-            border:"none",
-            width:200,
+            border: "none",
+            width: 200,
+            background:"white",
+            color:"black"
           }}
         />
-        <Link to="/profile/my-info" style={{
-          marginLeft:24,
-          color: "#fff",
-          textDecoration:"none",
-        }}>
+        <Link
+          to="/profile/my-info"
+          style={{
+            margin: 24,
+            color: "#ffff",
+            textDecoration: "none",
+          }}
+        >
           Mi perfil
         </Link>
       </div>
