@@ -15,7 +15,6 @@ const LikedEvents = () => {
         setIsLoading(true);
         const likeEvents =
           JSON.parse(localStorage.getItem(LIKED_EVENTS_STORAGE_KEY)) || [];
-        console.log(likeEvents);
 
         const results = [];
         for (const eventId of likeEvents) {
