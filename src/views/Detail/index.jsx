@@ -3,12 +3,31 @@ import { es } from "date-fns/locale";
 import styles from "./Detail.module.css";
 import { useLoaderData } from "react-router-dom";
 ////////////////////////////////////////////////////////////////
-
+const eventGoBack = () => {
+  window.history.back();
+};
 
 const Detail = () => {
   const eventData = useLoaderData();
   return (
     <div className={styles.container}>
+      <div>
+        <button className={styles.button} onClick={eventGoBack}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+        </button>
+      </div>
       <div className={styles.mainInfoContainer}>
         <h4 className={styles.eventName}>{eventData.name}</h4>
         <img
@@ -32,7 +51,6 @@ const Detail = () => {
         <p>
           Lugar: {eventData._embedded?.venues[0].name},{" "}
           {eventData._embedded?.venues[0].city.name},{" "}
-
           {eventData._embedded?.venues[0].state.stateCode}
         </p>
       </div>

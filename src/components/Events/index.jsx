@@ -33,7 +33,7 @@ const Events = ({ searchTerm, events }) => {
 
   return (
     <div>
-      <h2>Eventos</h2>
+      <h2>Eventos México</h2>
       {renderEvents()}
     </div>
   );
