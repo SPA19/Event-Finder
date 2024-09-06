@@ -1,5 +1,6 @@
 import { useState, forwardRef, useImperativeHandle } from "react";
 import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 const Navbar = forwardRef(({ onSerch }, ref) => {
   const [search, setSearch] = useState("");
@@ -19,67 +20,23 @@ const Navbar = forwardRef(({ onSerch }, ref) => {
   };
 
   return (
-    <div
-      ref={ref}
-      style={{
-        marginBottom: 14,
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        background: "#1279fd",
-        border: "none",
-        borderRadius: 5,
-      }}
-    >
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-        }}
-      >
-        <Link
-          to={"/"}
-          style={{
-            fontSize: 24,
-            fontWeight: "bold",
-            textDecoration: "none",
-            paddingLeft: 18,
-            color: "#fff",
-          }}
-        >
+    <div ref={ref} className={styles.container}>
+      <div className={styles.containerLogo}>
+        <Link to={"/"} className={styles.logo}>
           Mi Boletera
         </Link>
       </div>
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-end",
-        }}
-      >
+      <div className={styles.searchContainer}>
         <input
           placeholder="Buscar evento"
           onKeyDown={handleInputKeyDown}
           onChange={handleInputChange}
           value={search}
-          style={{
-            fontSize: 16,
-            padding: "6px 12px",
-            borderRadius: 4,
-            border: "none",
-            width: 200,
-            background:"white",
-            color:"black"
-          }}
+          className={styles.inputSearch}
         />
         <Link
           to="/profile/my-info"
-          style={{
-            margin: 24,
-            color: "#ffff",
-            textDecoration: "none",
-          }}
+          className={styles.profile}
         >
           Mi perfil
         </Link>
