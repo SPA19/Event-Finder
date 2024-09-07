@@ -7,14 +7,13 @@ import styles from "./Home.module.css";
 
 const Home = () => {
   const { data, isLoading, error, fetchEvents } = useEventsResults();
-  const events = useMemo(() => data?._embedded?.events || [],
+  const events = useMemo(
+    () => data?._embedded?.events || [],
     [data?._embedded?.events]
   );
-  const page = useMemo(() => data?.page || {},
-    [data?.page]
-  );
-
+  const page = useMemo(() => data?.page || {}, [data?.page]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
   const containerRef = useRef();
   const fetchMyEventsRef = useRef();
 
@@ -29,10 +28,13 @@ const Home = () => {
     fetchEvents(`&keyword=${term}`);
   };
 
-  const handlePageClick = useCallback(({ selected }) => {
+  const handlePageClick = useCallback(
+    ({ selected }) => {
+      setCurrentPage(selected);
       fetchEvents(`&keyword=${searchTerm}&page=${selected}`);
     },
-    [searchTerm, fetchEvents]);
+    [searchTerm, fetchEvents]
+  );
 
   const renderEvents = () => {
     if (isLoading) {
@@ -58,6 +60,7 @@ const Home = () => {
           pageCount={page.totalPages}
           previousLabel="<"
           renderOnZeroPageCount={null}
+          forcePage={currentPage}
         />
       </div>
     );

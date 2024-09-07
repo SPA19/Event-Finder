@@ -23,7 +23,7 @@ const Navbar = forwardRef(({ onSerch }, ref) => {
     <div ref={ref} className={styles.container}>
       <div className={styles.containerLogo}>
         <Link to={"/"} className={styles.logo}>
-          Mi Boletera
+          TickTrack
         </Link>
       </div>
       <div className={styles.searchContainer}>
@@ -34,10 +34,7 @@ const Navbar = forwardRef(({ onSerch }, ref) => {
           value={search}
           className={styles.inputSearch}
         />
-        <Link
-          to="/profile/my-info"
-          className={styles.profile}
-        >
+        <Link to="/profile/my-info" className={styles.profile}>
           Mi perfil
         </Link>
       </div>

@@ -109,3 +109,25 @@
   text-align: start;
   margin: 0 0 8px;
 }
+
+.ticketLink{
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff; /* Color de fondo */
+  color: white; /* Color de texto */
+  font-size: 16px; /* Tamaño del texto */
+  text-decoration: none; /* Sin subrayado */
+  border-radius: 8px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones para animaciones */
+}
+
+.ticketLink:hover{
+  background-color: #0056b3; /* Color de fondo al pasar el mouse */
+  transform: scale(1.05); /* Efecto de agrandar ligeramente */
+  color: black;
+}
+
+.ticketLink:active{
+  background-color: #003f7f; /* Color de fondo al hacer clic */
+  transform: scale(0.98); /* Efecto de click */
+}

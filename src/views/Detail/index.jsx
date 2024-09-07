@@ -57,7 +57,10 @@ const Detail = () => {
       <div className={styles.seatInfoContainer}>
         <h6 className={styles.seatMapTitle}>Mapa del evento</h6>
         <img
-          src={eventData.seatmap?.staticUrl}
+          src={
+            eventData.seatmap?.staticUrl ||
+            "https://s1.ticketm.net/tmimages/venue/maps/mxc/103395s.gif"
+          }
           className={styles.eventMap}
           alt="Seatmap event"
         />
@@ -68,7 +71,9 @@ const Detail = () => {
           {eventData.priceRanges?.[0].max} {eventData.priceRanges?.[0].currency}
         </p>
       </div>
-      <a href={eventData.url}>Ir por tus boletos</a>
+      <a href={eventData.url} className={styles.ticketLink}>
+        Ir por tus boletos
+      </a>
     </div>
   );
 };
