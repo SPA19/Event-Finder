@@ -1,37 +1,78 @@
 .eventItemContainer{
   display: flex;
-  margin: 24px 0px;
-  align-items: start;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F2F2F2;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  transition: transform 0.3s ease;
+}
+
+.eventItemContainer:hover{
+  transform: translateY(-5px);
 }
 
 .eventInfoContainer{
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  margin-left: 14px;
+  text-align: center;
 }
 
 .eventName{
   margin: 0;
+  text-align: left;
   font-size: 22px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.eventClasification{
+  margin: 8px 0px 0px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bolder;
+  color: #808080;
 }
 
 .eventsInfo{
   text-align: left;
-  margin: 0;
+  margin: 14px 0;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  font-size: 14px;
+  color: #808b96;
 }
 
 .seeMoreBtn{
   margin-top: 8px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
+.seeMoreBtn:hover{
+  background-color: #0056b3;
+  color: #dddddd;
+}
+
+/* Imagen y corazón */
 .imageContainer{
   position: relative;
+  display: flex;
+  justify-content: center; /* Centrar imagen horizontalmente */
+  align-items: center;     /* Centrar imagen verticalmente */
+  height: 200px;           /* Altura del contenedor */
+  margin-bottom: 16px;
+  overflow: hidden;  
 }
 
 .hearthImage{
@@ -41,4 +82,11 @@
   left: 10px;
   z-index: 1;
   cursor: pointer;
+}
+
+.eventImage{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
