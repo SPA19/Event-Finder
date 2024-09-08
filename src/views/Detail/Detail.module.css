@@ -124,7 +124,7 @@
 .ticketLink:hover{
   background-color: #0056b3; /* Color de fondo al pasar el mouse */
   transform: scale(1.05); /* Efecto de agrandar ligeramente */
-  color: black;
+  color: #cdd2d8;
 }
 
 .ticketLink:active{

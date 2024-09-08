@@ -15,7 +15,6 @@ const EventItem = ({ info, id, name, clasification, image, onEventClick }) => {
   const handleHearthClilck = () => {
     toggleEventLike();
   };
-
   return (
     <div className={styles.eventItemContainer}>
       <div className={styles.imageContainer}>
@@ -30,7 +29,11 @@ const EventItem = ({ info, id, name, clasification, image, onEventClick }) => {
 
       <div className={styles.eventInfoContainer}>
         <h4 className={styles.eventName}>{name}</h4>
-        <p className={styles.eventClasification}>{clasification}</p>
+        {clasification !== "Undefined" ? (
+          <p className={styles.eventClasification}>{clasification}</p>
+        ) : (
+          <p className={styles.eventClasification}>Unclassified</p>
+        )}
         <p className={styles.eventsInfo}>{info}</p>
         <button onClick={handleSeeMoreClick} className={styles.seeMoreBtn}>
           Ver más

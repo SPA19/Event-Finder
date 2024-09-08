@@ -9,6 +9,9 @@ const eventGoBack = () => {
 
 const Detail = () => {
   const eventData = useLoaderData();
+  const imageNotFound =
+    "https://s1.ticketm.net/tmimages/venue/maps/mxc/103395s.gif";
+
   return (
     <div className={styles.container}>
       <div>
@@ -57,10 +60,7 @@ const Detail = () => {
       <div className={styles.seatInfoContainer}>
         <h6 className={styles.seatMapTitle}>Mapa del evento</h6>
         <img
-          src={
-            eventData.seatmap?.staticUrl ||
-            "https://s1.ticketm.net/tmimages/venue/maps/mxc/103395s.gif"
-          }
+          src={eventData.seatmap?.staticUrl || imageNotFound}
           className={styles.eventMap}
           alt="Seatmap event"
         />
