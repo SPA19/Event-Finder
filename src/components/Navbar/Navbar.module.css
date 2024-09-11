@@ -5,7 +5,9 @@
   align-items: center;
   background-color: #1279fd;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  padding: 10px;
+  flex-wrap: wrap;
 }
 
 .containerLogo{
@@ -24,6 +26,7 @@
 .logo:hover{
   color: #ffff;
 }
+
 .searchContainer{
   flex: 1;
   display: flex;
@@ -38,15 +41,65 @@
   border: none;
   width: 200px;
   background-color: #ffff;
-  color: #000000;
+  color: #616161;
 }
 
 .profile{
-  margin: 24px;
-  color: #ffff;
+  margin: 20px;
+  color: #dddddd;
   text-decoration: none;
+  padding: 4px;
 }
 
 .profile:hover{
-  color: #000000;
+  color: #ffff;
+
+}
+
+/* Estilos para pantallas medianas (tabletas) */
+@media (max-width: 768px){
+  .container{
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .logo{
+    font-size: 22px;
+    padding-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .inputSearch {
+    width: 150px;
+    font-size: 14px;
+  }
+
+  .profile {
+    margin: 16px 0;
+  }
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 480px){
+  .container{
+    flex-direction: column;
+    padding: 8px;
+  }
+
+  .logo{
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .inputSearch{
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .profile{
+    margin: 12px 0;
+    padding: 8px;
+    width: 100%;
+    text-align: center;
+  }
 }

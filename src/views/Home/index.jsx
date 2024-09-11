@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import Navbar from "../../components/Navbar";
 import Events from "../../components/Events";
-import useEventsResults from "../../state/events-results";
+import useStore from "../../state/events-results";
 import ReactPaginate from "react-paginate";
 import styles from "./Home.module.css";
 
 const Home = () => {
-  const { data, isLoading, error, fetchEvents } = useEventsResults();
+  const { data, isLoading, error, fetchEvents } = useStore();
   const events = useMemo(
     () => data?._embedded?.events || [],
     [data?._embedded?.events]
