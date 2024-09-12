@@ -8,16 +8,17 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import Profile from "../views/Profile";
 import LikedEvents from "../views/Profile/components/LikedEvents";
 import MyInfo from "../views/Profile/components/MyInfo";
+import Global from "../config/Global.jsx";
 import { eventLoader } from "../utils/eventLoader.js";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: Global.baseUrlHome,
     element: <Home />,
     errorElement: <Error404 />,
   },
   {
-    path: "/detail/:eventId",
+    path: `${Global.baseUrlDetail}/:eventId`,
     element: (
       <Suspense fallback={<div>Cargando...</div>}>
         <ErrorBoundary
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
     loader: eventLoader,
   },
   {
-    path: "/profile",
+    path: Global.baseUrlProfile,
     element: <Profile />,
     children: [
       {

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { memo, useMemo } from "react";
 import styles from "./Events.module.css";
+import Global from "../../config/Global";
 
 import EventItem from "./components/EventItem";
 
@@ -8,7 +9,7 @@ const Events = ({ searchTerm, events }) => {
   const navigate = useNavigate();
 
   const handleEventItemClick = (id) => {
-    navigate(`/detail/${id}`);
+    navigate(`${Global.baseUrlDetail}/${id}`);
   };
 
   const filteredEvents = useMemo(() => {

@@ -1,5 +1,6 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Profile.module.css";
+import Global from "../../config/Global";
 
 const Profile = () => {
   const { pathname } = useLocation();
@@ -11,7 +12,7 @@ const Profile = () => {
 
   return (
     <div>
-    <Link to="/" className={styles.homeLink}>Inicio</Link>
+    <Link to={Global.baseUrlHome} className={styles.homeLink}>Inicio</Link>
       <div className={styles.tabsContainer}>
         <span
           className={`${pathname.includes("my-info") ? styles.active : ""} ${
