@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import EventItem from "../../../../components/Events/components/EventItem";
 import { useNavigate } from "react-router-dom";
 import styles from "../../../../components/Events/Events.module.css";
+import Global from "../../../../config/Global";
 import useStore from "../../../../state/events-results";
 
 const LikedEvents = () => {
@@ -16,7 +17,7 @@ const LikedEvents = () => {
   }, []);
 
   const handleEventItemClick = (eventId) => {
-    navigate(`/detail/${eventId}`);
+    navigate(`${Global.baseUrlDetail}/${eventId}`);
   };
 
   const containerClasses = `${styles.eventListContainer} ${

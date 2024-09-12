@@ -1,6 +1,7 @@
 import { useState, forwardRef, useImperativeHandle } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import Global from "../../config/Global";
 
 const Navbar = forwardRef(({ onSerch }, ref) => {
   const [search, setSearch] = useState("");
@@ -22,7 +23,7 @@ const Navbar = forwardRef(({ onSerch }, ref) => {
   return (
     <div ref={ref} className={styles.container}>
       <div className={styles.containerLogo}>
-        <Link to={"/"} className={styles.logo}>
+        <Link to={Global.baseUrlHome} className={styles.logo}>
           TickTrack
         </Link>
       </div>
@@ -34,7 +35,7 @@ const Navbar = forwardRef(({ onSerch }, ref) => {
           value={search}
           className={styles.inputSearch}
         />
-        <Link to="/profile/my-info" className={styles.profile}>
+        <Link to={`${Global.baseUrlProfile}/my-info`} className={styles.profile}>
           Mi perfil
         </Link>
       </div>

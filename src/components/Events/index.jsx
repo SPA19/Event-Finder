@@ -3,12 +3,13 @@ import { memo, useMemo } from "react";
 import styles from "./Events.module.css";
 
 import EventItem from "./components/EventItem";
+import Global from "../../config/Global";
 
 const Events = ({ searchTerm, events }) => {
   const navigate = useNavigate();
 
   const handleEventItemClick = (id) => {
-    navigate(`/detail/${id}`);
+    navigate(`${Global.baseUrlDetail}/${id}`);
   };
 
   const filteredEvents = useMemo(() => {
