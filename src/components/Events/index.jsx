@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { memo } from "react";
-import styles from "./Events.module.css"
+import { memo, useMemo } from "react";
+import styles from "./Events.module.css";
 
 import EventItem from "./components/EventItem";
 
@@ -11,16 +11,21 @@ const Events = ({ searchTerm, events }) => {
     navigate(`/detail/${id}`);
   };
 
-  const renderEvents = () => {
-    let eventsFiltered = events;
-
+  const filteredEvents = useMemo(() => {
     if (searchTerm.length > 0) {
-      eventsFiltered = eventsFiltered.filter((item) =>
+      return events.filter((item) =>
         item.name.toLocaleLowerCase().includes(searchTerm)
       );
     }
+    return events;
+  }, [events, searchTerm]);
 
-    return eventsFiltered.map((eventItem) => (
+  const containerClasses = `${styles.eventListContainer} ${
+    filteredEvents.length === 1 ? styles.singleItem : ""
+  }`;
+
+  const renderEvents = () => {
+    return filteredEvents.map((eventItem) => (
       <EventItem
         key={`event-ticket-${eventItem.id}`}
         name={eventItem.name}
@@ -36,7 +41,7 @@ const Events = ({ searchTerm, events }) => {
   return (
     <div>
       <h2>Eventos México</h2>
-      <div className={styles.eventListContainer}>{renderEvents()}</div>
+      <div className={containerClasses}>{renderEvents()}</div>
     </div>
   );
 };

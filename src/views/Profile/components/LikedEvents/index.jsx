@@ -19,6 +19,10 @@ const LikedEvents = () => {
     navigate(`/detail/${eventId}`);
   };
 
+  const containerClasses = `${styles.eventListContainer} ${
+    dataLiked.length === 1 ? styles.singleItem : ""
+  }`;
+
   if (Object.keys(errorLiked) > 0) {
     return <div>Ha ocurrido un error: {JSON.stringify(errorLiked)}</div>;
   }
@@ -29,7 +33,7 @@ const LikedEvents = () => {
 
   return (
     <>
-      <div className={styles.eventListContainer}>
+      <div className={containerClasses}>
         {dataLiked.map((event, index) => (
           <EventItem
             key={`liked-event-item-${event.id}-${index}`}
