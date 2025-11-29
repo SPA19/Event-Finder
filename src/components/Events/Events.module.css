@@ -1,11 +1,83 @@
-.eventListContainer{
+.eventListContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  padding: 20px;
+  padding: 32px 24px;
+  animation: fadeIn 0.8s ease-out;
 }
 
-.singleItem{
-  grid-template-columns: minmax(300px, 600px);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.singleItem {
+  grid-template-columns: repeat(1, minmax(280px, 400px));
   justify-content: center;
+}
+
+/* Efecto stagger para las cards */
+.eventListContainer > * {
+  animation: slideInUp 0.6s ease-out backwards;
+}
+
+.eventListContainer > *:nth-child(1) { animation-delay: 0.05s; }
+.eventListContainer > *:nth-child(2) { animation-delay: 0.1s; }
+.eventListContainer > *:nth-child(3) { animation-delay: 0.15s; }
+.eventListContainer > *:nth-child(4) { animation-delay: 0.2s; }
+.eventListContainer > *:nth-child(5) { animation-delay: 0.25s; }
+.eventListContainer > *:nth-child(6) { animation-delay: 0.3s; }
+.eventListContainer > *:nth-child(7) { animation-delay: 0.35s; }
+.eventListContainer > *:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive optimizado */
+@media (max-width: 1400px) {
+  .eventListContainer {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .eventListContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 24px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .eventListContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 20px 12px;
+  }
+}
+
+@media (max-width: 580px) {
+  .eventListContainer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px 12px;
+  }
+  
+  .singleItem {
+    grid-template-columns: 1fr;
+  }
 }

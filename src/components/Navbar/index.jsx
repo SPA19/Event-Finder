@@ -21,26 +21,35 @@ const Navbar = forwardRef(({ onSerch }, ref) => {
   };
 
   return (
-    <div ref={ref} className={styles.container}>
-      <div className={styles.containerLogo}>
-        <Link to={Global.baseUrlHome} className={styles.logo}>
-          TickTrack
-        </Link>
-      </div>
-      <div className={styles.searchContainer}>
-        <input
-          placeholder="Buscar evento"
-          onKeyDown={handleInputKeyDown}
-          onChange={handleInputChange}
-          value={search}
-          className={styles.inputSearch}
-        />
-        <Link to={`${Global.baseUrlProfile}/my-info`} className={styles.profile}>
-          Mi perfil
-        </Link>
-      </div>
-    </div>
-  );
+		<div
+			ref={ref}
+			className={styles.container}
+		>
+			<div className={styles.containerLogo}>
+				<div
+					className={styles.logo}
+					onClick={() => (window.location.href = Global.baseUrlHome)}
+				>
+					TickTrack
+				</div>
+			</div>
+			<div className={styles.searchContainer}>
+				<input
+					placeholder="Buscar evento"
+					onKeyDown={handleInputKeyDown}
+					onChange={handleInputChange}
+					value={search}
+					className={styles.inputSearch}
+				/>
+				<Link
+					to={`${Global.baseUrlProfile}/my-info`}
+					className={styles.profile}
+				>
+					Mi perfil
+				</Link>
+			</div>
+		</div>
+	);
 });
 
 Navbar.displayName = "Navbar";

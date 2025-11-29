@@ -1,43 +1,69 @@
+/* ==========================================
+   APP COMPONENT STYLES
+   ========================================== */
 #root {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
-  padding: 2rem;
-  text-align: center;
+  padding: 20px;
+  position: relative;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Animación de entrada para toda la aplicación */
+#root > * {
+  animation: fadeInApp 0.5s ease-out;
 }
 
-@keyframes logo-spin {
+@keyframes fadeInApp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* ==========================================
+   RESPONSIVE PADDING
+   ========================================== */
+@media (max-width: 1024px) {
+  #root {
+    padding: 16px;
   }
 }
 
-.card {
-  padding: 2em;
+@media (max-width: 768px) {
+  #root {
+    padding: 12px;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+@media (max-width: 480px) {
+  #root {
+    padding: 8px;
+  }
+}
+
+/* ==========================================
+   SMOOTH SCROLL
+   ========================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================
+   SELECTION STYLES
+   ========================================== */
+::selection {
+  background: #667eea;
+  color: white;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: #667eea;
+  color: white;
+  text-shadow: none;
 }
