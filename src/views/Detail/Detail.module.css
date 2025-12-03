@@ -1,133 +1,596 @@
-.container{
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  animation: fadeIn 0.6s ease-out;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .button {
-  position: fixed; /* Mantiene el botón en la parte superior izquierda al hacer scroll */
-  top: 20px; /* Distancia desde la parte superior */
-  left: 20px; /* Distancia desde la izquierda */
-  background-color: transparent; /* Fondo transparente */
-  border: none; /* Sin bordes */
-  padding: 0; /* Sin padding adicional */
-  cursor: pointer; /* Cambia cursor al pasar sobre el botón */
-  z-index: 1000; /* Asegura que esté encima de otros elementos */
-  display: flex; /* Alineación del contenido */
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.95), rgba(118, 75, 162, 0.95));
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button:hover::before {
+  opacity: 1;
 }
 
 .button svg {
-  width: 56px;
-  height: 56px;
+  width: 32px;
+  height: 32px;
   stroke: white;
-  transition: stroke 0.3s ease;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.button:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.6);
 }
 
 .button:hover svg {
-  stroke: #ccc;
+  transform: translateX(-2px);
+}
+
+.button:active {
+  transform: translateY(0) scale(1.05);
 }
 
 .button:focus {
   outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
 }
 
-/* Responsive Styles */
-@media (max-width: 1420px){
-  .button {
-    top: 10px;
-    left: 5px;
-  }
-
-  .button svg {
-    width: 40px;
-    height: 40px;
-  }
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  max-height: 600px;
+  overflow: hidden;
+  border-radius: 0 0 32px 32px;
+  margin-bottom: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 480px){
-  .button {
-    top: 5px;
-    left: 5px;
-  }
-
-  .button svg {
-    width: 32px;
-    height: 32px;
-  }
+.eventImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
 }
 
-.mainInfoContainer{
+.heroSection:hover .eventImage {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px;
+}
+
+.eventName {
+  font-size: 48px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 16px 0;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  letter-spacing: -1px;
+  line-height: 1.2;
+  animation: slideInUp 0.8s ease-out 0.2s backwards;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mainInfoContainer {
+  padding: 0 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.infoCard {
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.infoCard:hover {
+  box-shadow: 0 12px 48px rgba(102, 126, 234, 0.15);
+  transform: translateY(-4px);
+}
+
+.descriptionSection {
+  grid-column: 1;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionTitle::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 28px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+.infoParagraph {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #4a4a4a;
+  margin: 0;
+  text-align: justify;
+}
+
+.detailsSection {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detailItem {
+  display: flex;
   align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+  border-radius: 16px;
+  border-left: 4px solid transparent;
+  border-image: linear-gradient(135deg, #667eea, #764ba2) 1;
+  transition: all 0.3s ease;
 }
 
-.eventImage{
-  width: 100%;
-  height: 70vh;
-  object-fit: cover;
+.detailItem:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  transform: translateX(4px);
 }
 
-.eventMap{
-  width: 50%;
-  height: 50%;
-  margin: 12px 0;
+.detailIcon {
+  font-size: 24px;
+  min-width: 24px;
 }
 
-.eventName{
-  margin: 16px 0px;
+.detailContent {
+  flex: 1;
+}
+
+.detailLabel {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #667eea;
+  margin: 0 0 6px 0;
+}
+
+.detailValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.mapSection {
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 24px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.seatMapTitle {
+  font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.seatMapTitle::before {
+  content: '🗺️';
   font-size: 28px;
 }
 
-.infoParagraph{
-  text-align: left;
-  margin: 8px 0px;
+.mapContainer {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  background: #f0f0f0;
 }
 
-.dateParagraph{
-  margin: 4px 0px;
+.eventMap {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.seatInfoContainer{
-  flex-direction: column;
-  margin-top: 10px;
+.mapContainer:hover .eventMap {
+  transform: scale(1.02);
 }
 
-.seatMapTitle{
-  text-align: start;
-  margin: 6px 0;
+.additionalInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.infoBox {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.3s ease;
+}
+
+.infoBox:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-color: rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+}
+
+.infoBoxTitle {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #667eea;
+  margin: 0 0 12px 0;
+}
+
+.pleaseNoteLegend {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4a4a4a;
+  margin: 0;
+}
+
+.priceRangeLegend {
   font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
 }
 
-.pleaseNoteLegend{
-  text-align: start;
-  margin: 10px 0;
+.ticketSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 32px;
+  border-radius: 24px;
+  margin: 32px 0;
 }
 
-.priceRangeLegend{
-  font-weight: bold;
-  font-size: 16px;
-  text-align: start;
-  margin: 0 0 8px;
+.ticketLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 48px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
-.ticketLink{
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #007bff; /* Color de fondo */
-  color: white; /* Color de texto */
-  font-size: 16px; /* Tamaño del texto */
-  text-decoration: none; /* Sin subrayado */
-  border-radius: 8px; /* Bordes redondeados */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones para animaciones */
+.ticketLink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
 }
 
-.ticketLink:hover{
-  background-color: #0056b3; /* Color de fondo al pasar el mouse */
-  transform: scale(1.05); /* Efecto de agrandar ligeramente */
-  color: #cdd2d8;
+.ticketLink:hover::before {
+  left: 100%;
 }
 
-.ticketLink:active{
-  background-color: #003f7f; /* Color de fondo al hacer clic */
-  transform: scale(0.98); /* Efecto de click */
+.ticketLink::after {
+  content: '→';
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.ticketLink:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 16px 48px rgba(102, 126, 234, 0.6);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.ticketLink:hover::after {
+  transform: translateX(4px);
+}
+
+.ticketLink:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+@media (max-width: 1024px) {
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .descriptionSection {
+    grid-column: 1;
+  }
+
+  .detailsSection {
+    grid-column: 1;
+  }
+
+  .additionalInfo {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
+    top: 16px;
+    left: 16px;
+    padding: 10px;
+  }
+
+  .button svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .heroSection {
+    height: 50vh;
+    min-height: 350px;
+    border-radius: 0 0 24px 24px;
+  }
+
+  .imageOverlay {
+    padding: 32px 24px;
+  }
+
+  .eventName {
+    font-size: 32px;
+  }
+
+  .mainInfoContainer {
+    padding: 0 20px;
+  }
+
+  .infoCard {
+    padding: 24px;
+  }
+
+  .sectionTitle {
+    font-size: 20px;
+  }
+
+  .mapSection {
+    padding: 24px;
+  }
+
+  .ticketLink {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  .ticketSection {
+    padding: 32px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    top: 12px;
+    left: 12px;
+    padding: 8px;
+  }
+
+  .button svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .heroSection {
+    height: 40vh;
+    min-height: 300px;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 24px;
+  }
+
+  .imageOverlay {
+    padding: 24px 16px;
+  }
+
+  .eventName {
+    font-size: 26px;
+  }
+
+  .mainInfoContainer {
+    padding: 0 16px;
+  }
+
+  .infoCard {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 18px;
+  }
+
+  .sectionTitle::before {
+    height: 24px;
+  }
+
+  .infoParagraph {
+    font-size: 15px;
+  }
+
+  .detailItem {
+    padding: 16px;
+  }
+
+  .detailLabel {
+    font-size: 11px;
+  }
+
+  .detailValue {
+    font-size: 14px;
+  }
+
+  .mapSection {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .seatMapTitle {
+    font-size: 20px;
+  }
+
+  .infoBox {
+    padding: 20px;
+  }
+
+  .priceRangeLegend {
+    font-size: 20px;
+  }
+
+  .ticketLink {
+    padding: 14px 32px;
+    font-size: 15px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ticketSection {
+    padding: 24px 16px;
+  }
+}
+
+.infoCard,
+.detailItem,
+.infoBox {
+  animation: fadeInScale 0.6s ease-out backwards;
+}
+
+.infoCard:nth-child(1) { animation-delay: 0.1s; }
+.infoCard:nth-child(2) { animation-delay: 0.2s; }
+
+.detailItem:nth-child(1) { animation-delay: 0.15s; }
+.detailItem:nth-child(2) { animation-delay: 0.25s; }
+.detailItem:nth-child(3) { animation-delay: 0.35s; }
+.detailItem:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

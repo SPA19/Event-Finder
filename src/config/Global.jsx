@@ -1,7 +1,7 @@
 const Global = {
-  baseUrlHome: "/",
-  baseUrlDetail: "/detail",
-  baseUrlProfile: "/profile",
+  baseUrlHome: "/Event-Finder",
+  baseUrlDetail: "/Event-Finder/detail",
+  baseUrlProfile: "/Event-Finder/profile",
 };
 
 export default Global;
