@@ -1,84 +1,107 @@
-# Event-Finder
+# 🎉 **Event-Finder**
 
 ![Event-Finder](https://img.shields.io/badge/Event--Finder-v1.0.0-blue)
 
-Event-Finder es una aplicación ligera frontend (creada con Vite + React) para buscar, listar y marcar eventos como favoritos. Está pensada como un proyecto demostrativo y base para ampliar con APIs reales, autenticación y persistencia.
+Event-Finder es una aplicación ligera construida con **Vite + React**, diseñada para explorar todos los eventos disponibles en México utilizando la **API de Ticketmaster**. Permite buscar eventos, marcarlos como favoritos y, además, acceder directamente al enlace oficial para comprarlos desde Ticketmaster. Es un proyecto demostrativo ideal para escalar hacia funcionalidades reales como APIs más complejas, autenticación y persistencia.
 
-**Características principales**
-- **Listado de eventos**: carga datos desde `data/events.json` para mostrar una lista de eventos.
-- **Detalle de evento**: vista con información ampliada de cada evento.
-- **Me gusta / Favoritos**: marcar eventos favoritos con un hook dedicado (`useLikeEvents.js`).
-- **Componentización clara**: componentes reutilizables en `src/components` y vistas en `src/views`.
-- **Manejo de errores**: `ErrorBoundary` y páginas de error (`Error404`).
+---
 
-**Demo rápido**
-Clona el repositorio, instala dependencias y levanta la app en modo desarrollo (instrucciones detalladas más abajo). Al abrir `http://localhost:5173` verás el listado principal y podrás navegar a detalles y perfil.
+## 🚀 **Características principales**
 
-**Stack tecnológico**
-- **Framework**: React (JSX) con Vite
-- **Estilos**: CSS Modules y archivos CSS locales por componente
-- **Herramientas**: Vite, npm/yarn
+* 📋 **Listado de eventos** cargados desde `data/events.json`.
+* 🔍 **Detalle de evento** con información ampliada.
+* ❤️ **Favoritos (Like)** mediante un hook dedicado: `useLikeEvents.js`.
+* 🧩 **Componentización clara** para fácil mantenimiento y reuso.
+* 🛑 **Manejo de errores** con `ErrorBoundary` y páginas `404`.
 
-**Requisitos**
-- Node.js (>=16 recomendado)
-- npm o yarn
+---
 
-**Instalación y ejecución**
-Abre PowerShell en la carpeta del proyecto `Event-finder` y ejecuta:
+## ⚡ **Demo rápida**
 
-```pwsh
+Clona el repositorio, instala dependencias y ejecuta el modo desarrollo:
+
+```bash
+npm install
+npm run dev
+```
+
+Visita 👉 **[http://localhost:5173](http://localhost:5173)** para ver la app en acción.
+
+---
+
+## 🧱 **Stack tecnológico**
+
+* ⚛️ **Framework:** React + Vite
+* 🎨 **Estilos:** CSS Modules
+* 🛠️ **Herramientas:** npm / yarn, Vite
+
+---
+
+## 📦 **Requisitos**
+
+* Node.js **16+**
+* npm o yarn
+
+---
+
+## 🛠️ **Instalación y ejecución**
+
+```bash
 # Instalar dependencias
 npm install
 
-# Ejecutar en modo desarrollo (Vite)
+# Ejecutar en modo desarrollo
 npm run dev
 
-# Construir para producción
+# Build de producción
 npm run build
 
-# Ejecutar servidor de producción (opcional)
+# Vista previa de producción
 npm run preview
 ```
 
-Los scripts se corresponden con los del `package.json` del proyecto.
+---
 
-**Estructura del proyecto (resumen)**
-- `index.html` - punto de entrada
-- `src/main.jsx` - arranque de React + enrutador
-- `src/App.jsx` - componente raíz
-- `src/assets/` - imágenes y recursos estáticos
-- `src/components/` - componentes UI:
-  - `Navbar/` - barra de navegación
-  - `Events/` - lista de eventos y subcomponentes (`EventItem/`)
-  - `SignupForm/` - componente de registro (UI)
-- `src/views/` - páginas principales:
-  - `Home/` - listado inicial
-  - `Detail/` - detalle de evento
-  - `Profile/` - perfil del usuario y eventos marcados
-  - `Error404/` - página 404
-- `src/hooks/`:
-  - `useEventsData.js` - hook para cargar eventos (puede usar `src/utils/fetchEvents.js` o `data/events.json`)
-  - `useLikeEvents.js` - estado y lógica de favoritos
-- `src/utils/`:
-  - `eventLoader.js`, `fetchEvents.js`, `wrapPromise.js`, `constants.js` - utilidades para carga y control de datos
-- `data/events.json` - datos de ejemplo de eventos
-- `src/state/events-results.js` - estado global/local relacionado con resultados
+## 🗂️ **Estructura del proyecto (resumida)**
 
-**Flujo de datos (alto nivel)**
-1. `useEventsData` o `fetchEvents` leen `data/events.json` (o endpoint) y devuelven los eventos.
-2. `Events` renderiza la lista usando `EventItem`.
-3. `EventItem` emite acciones de like hacia `useLikeEvents` que mantiene la lista de favoritos (localmente en memoria; puedes extender para usar LocalStorage o backend).
-4. Las rutas en `src/routes/index.jsx` gestionan la navegación entre `Home`, `Detail`, `Profile`.
+> 🔎 Solo lo esencial para entender la arquitectura.
 
-**Cómo extender o personalizar**
-- Reemplazar `data/events.json` por una API real: modifica `src/utils/fetchEvents.js` o el hook `useEventsData` para apuntar a un endpoint.
-- Persistencia de favoritos: adapta `useLikeEvents.js` para usar `localStorage`, IndexedDB o llamadas a una API.
-- Autenticación: integrar una capa de auth (ej. JWT) y proteger rutas como `Profile`.
+* **`src/`** – código principal
 
-**Resolución de problemas**
-- Si la app no arranca, verifica la versión de Node: `node -v`.
-- Si Vite indica puerto en uso, ejecuta `npm run dev -- --port 3000` o cambia el puerto en `vite.config.js`.
+  * `components/` – UI reutilizable (Navbar, Listas, Formularios…)
+  * `views/` – páginas: Home, Detail, Profile, Error404
+  * `hooks/` – lógica reutilizable (`useEventsData`, `useLikeEvents`)
+  * `utils/` – funciones auxiliares (fetch, loaders…)
+* **`data/events.json`** – datos de ejemplo
+* **`routes/`** – configuración de navegación
 
-## 👨‍💻 Autor
+---
 
-Desarrollado por Simón Posada Acosta - [simon.150@hotmail.com]
+## 🔄 **Flujo de datos**
+
+1. `useEventsData` obtiene los eventos (desde JSON o una API).
+2. `Events` muestra la lista usando `EventItem`.
+3. `EventItem` envía acciones a `useLikeEvents` para gestionar favoritos.
+4. Las rutas en `routes/index.jsx` manejan la navegación entre vistas.
+
+---
+
+## 🔧 **Cómo extender el proyecto**
+
+* 🌐 **Conectar a una API real:** modificar `fetchEvents.js` o `useEventsData`.
+* 💾 **Persistencia de favoritos:** integrar `localStorage`, IndexedDB o un backend.
+* 🔐 **Autenticación:** agregar JWT o proveedores externos (Auth0, Firebase…).
+
+---
+
+## ❗ **Resolución de problemas**
+
+* ❌ **No arranca la app:** verificar la versión de Node → `node -v`.
+* 🔄 **Puerto en uso:** ejecutar → `npm run dev -- --port 3000`.
+
+---
+
+## 👨‍💻 **Autor**
+
+Desarrollado por **Simón Posada Acosta**
+📧 *[simon.150@hotmail.com](mailto:simon.150@hotmail.com)*
