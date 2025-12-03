@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  base: "https://SPA19.github.io/Event-Finder",
+	plugins: [react()],
+	base: "/Event-Finder",
 });
