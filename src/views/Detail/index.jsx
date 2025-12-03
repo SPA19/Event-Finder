@@ -53,7 +53,7 @@ const Detail = () => {
 					{/* Descripción del evento */}
 					{eventData.info && (
 						<div className={`${styles.infoCard} ${styles.descriptionSection}`}>
-							<h2 className={styles.sectionTitle}>📋 Acerca del evento</h2>
+							<h2 className={styles.sectionTitle}>Acerca del evento</h2>
 							<p className={styles.infoParagraph}>{eventData.info}</p>
 						</div>
 					)}

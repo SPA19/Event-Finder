@@ -352,7 +352,6 @@
   justify-content: center;
   align-items: center;
   padding: 48px 32px;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
   border-radius: 24px;
   margin: 32px 0;
 }
